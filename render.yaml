@@ -10,6 +10,8 @@ services:
     buildCommand: pip install -r requirements.txt && python manage.py collectstatic --noinput
     startCommand: python manage.py migrate && gunicorn Main.wsgi:application --bind 0.0.0.0:$PORT
     envVars:
+      - key: PYTHON_VERSION
+        value: 3.9.18
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
@@ -20,3 +22,4 @@ services:
         fromDatabase:
           name: django-forum-db
           property: connectionString
+
