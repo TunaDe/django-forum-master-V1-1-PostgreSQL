@@ -8,7 +8,7 @@ services:
     env: python
     plan: free
     buildCommand: python -m pip install --upgrade pip && python -m pip install "setuptools<70" wheel && python -m pip install --no-build-isolation -r requirements.txt && python manage.py collectstatic --noinput
-    startCommand: python manage.py migrate && gunicorn Main.wsgi:application --bind 0.0.0.0:$PORT
+    startCommand: python manage.py migrate && gunicorn Main.wsgi:application --bind 0.0.0.0:$PORT --access-logfile - --error-logfile - --log-level info --capture-output
     envVars:
       - key: PYTHON_VERSION
         value: 3.9.18
@@ -22,5 +22,6 @@ services:
         fromDatabase:
           name: django-forum-db
           property: connectionString
+
 
 
