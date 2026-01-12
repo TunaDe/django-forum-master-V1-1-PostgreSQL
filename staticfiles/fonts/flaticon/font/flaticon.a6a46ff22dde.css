@@ -1,0 +1,38 @@
+	/*
+  	Flaticon icon font: Flaticon
+  	Creation date: 17/09/2020 05:03
+  	*/
+
+@font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.72f703bc7408.eot");
+  src: url("./Flaticon.72f703bc7408.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.f5f532bc92cb.woff2") format("woff2"),
+       url("./Flaticon.4d8c1486095d.woff") format("woff"),
+       url("./Flaticon.7872a6715018.ttf") format("truetype"),
+       url("./Flaticon.48835d172d8c.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.48835d172d8c.svg#Flaticon") format("svg");
+  }
+}
+
+[class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+[class^="flaticon-"]:after, [class*=" flaticon-"]:after {   
+  font-family: Flaticon;
+        font-size: 20px;
+font-style: normal;
+margin-left: 20px;
+}
+
+.flaticon-graduated:before { content: "\f100"; }
+.flaticon-online:before { content: "\f101"; }
+.flaticon-instructor:before { content: "\f102"; }
+.flaticon-tools:before { content: "\f103"; }
+.flaticon-quiz:before { content: "\f104"; }
+.flaticon-browser:before { content: "\f105"; }
