@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  iShout | Shout out!!
+{% endblock %}
+
+
+
+{% block content %}
+    <section class="hero-wrap" style="height: 65px; background-image: url({% static 'images/background.jpg' %});">
+    </section>
+    <section class="container">
+
+        <div class="comment-form-wrap pt-5">
+            <h3 class="mb-5" style="font-size: 20px; font-weight: bold;">Now its time to be heard!!</h3>
+            <form class="p-5 bg-light" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% if error %}
+                  <p style="color:#b00020; font-weight:600;">{{ error }}</p>
+                {% endif %}
+              <p class="text-muted mb-4">Your posts will be published after they receive admin approval.</p>
+              <div class="form-group">
+                <label for="title">Title *</label>
+                <input type="text" required class="form-control" name="title" id="title">
+              </div>
+
+              <div class="form-group">
+                <label for="status">Status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="draft">Not done? Save your shout in your profile till youre ready</option>
+                    <option value="published">Shout out loud!!</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="detail">Please tell us more :) *</label>
+                <textarea required name="detail" id="detail" cols="30" rows="10" class="form-control"></textarea>
+              </div>
+
+              <div class="form-group">
+                <label for="attachment">Attachment (optional)</label>
+
+                <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+                  <label for="attachment" class="btn py-3 px-4 btn-primary" style="margin-bottom:0; cursor:pointer;">Choose file</label>
+                  <span id="attachment-filename" style="opacity:0.8;">No file chosen</span>
+                </div>
+
+                <input
+                  type="file"
+                  name="attachment"
+                  id="attachment"
+                  accept=".pdf,.doc,.docx,.mp3,.mp4"
+                  style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0, 0, 0, 0); white-space:nowrap; border:0;"
+                  onchange="document.getElementById('attachment-filename').textContent = this.files.length ? this.files[0].name : 'No file chosen';"
+                >
+
+                <small style="display:block; opacity:0.8;">Allowed: PDF, Word (.doc/.docx), MP3, MP4</small>
+              </div>
+
+              <div class="form-group">
+                <input type="submit" value="Shout out!" class="btn py-3 px-4 btn-primary">
+              </div>
+
+            </form>
+          </div>
+    </section>
+{% endblock %}
