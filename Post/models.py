@@ -25,7 +25,7 @@ class Post(models.Model):
         null=True,
         validators=[FileExtensionValidator(['pdf', 'doc', 'docx', 'mp3', 'mp4'])],
     )
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)  # This allows empty tags
 
     class Meta:
         ordering = ('-published',)
@@ -41,3 +41,4 @@ class Post(models.Model):
     def __str__(self):
         return self.title
     
+
