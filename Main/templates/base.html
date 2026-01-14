@@ -72,6 +72,15 @@
            <div id="google_translate_element"></div>
          </li>
 
+        <div class="sidebar-box bg-light">
+          <form action="{% url 'post:home' %}" method="get" class="search-form">
+        <div class="form-group">
+      <span class="icon fa fa-search"></span>
+      <input type="text" name="q" class="form-control" placeholder="Search title..." value="{{ query|default:'' }}">
+        </div>
+          </form>
+        </div>
+
          <!-- Social links -->
          <li class="nav-item">
            <a class="nav-link" href="https://www.youtube.com/@SocialScienceGurusUnite" target="_blank" rel="noopener" aria-label="YouTube">
@@ -260,3 +269,4 @@
 
 </body>
 </html>
+
