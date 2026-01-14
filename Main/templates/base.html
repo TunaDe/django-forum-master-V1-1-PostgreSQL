@@ -1,3 +1,4 @@
+
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -70,15 +71,6 @@
          <li class="nav-item" style="display:flex; align-items:center; padding:0 0.5rem;">
            <div id="google_translate_element"></div>
          </li>
-
-         <div class="sidebar-box bg-light">
-          <form action="{% url 'post:home' %}" method="get" class="search-form">
-            <div class="form-group">
-              <span class="icon fa fa-search"></span>
-          <input type="text" name="q" class="form-control" placeholder="Search title..." value="{{ query|default:'' }}">
-            </div>
-          </form>
-         </div>  
 
          <!-- Social links -->
          <li class="nav-item">
@@ -268,4 +260,3 @@
 
 </body>
 </html>
-
