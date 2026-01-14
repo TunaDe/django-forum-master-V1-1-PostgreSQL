@@ -26,15 +26,30 @@ def _attachment_error(uploaded_file):
 
 #Home view - index.html
 def home(request, tag_slug=None):
-    posts = Post.objects.filter(status='published')[:12]
+    # Search logic
+    query = request.GET.get("q")
+    if query:
+        # Filter by title containing the query (case-insensitive)
+        posts = Post.objects.filter(status='published', title__icontains=query)
+    else:
+        # Default behavior: show latest 12 published posts
+        posts = Post.objects.filter(status='published')[:12]
     
     post_count = Post.objects.count()
     user_count = User.objects.count()
     tag = None
-    if  tag_slug:
+    if tag_slug:
         tag = get_object_or_404(Tag, slug=tag_slug)
-        posts = Post.objects.filter(status="published", tags__in=[tag])
-    context = {"posts":posts, "tag":tag, "post_count":post_count, "user_count":user_count}
+        # If searching within a tag, filter the already searched posts
+        posts = posts.filter(tags__in=[tag])
+    
+    context = {
+        "posts": posts, 
+        "tag": tag, 
+        "post_count": post_count, 
+        "user_count": user_count,
+        "query": query  # Pass query back to template to keep it in the search box
+    }
     return render(request, "post/index.html", context)
 
 
