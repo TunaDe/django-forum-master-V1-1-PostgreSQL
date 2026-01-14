@@ -76,6 +76,11 @@ def create(request):
         slug = request.POST.get('slug')
         detail = request.POST.get('detail')
         status = request.POST.get('status')
+        
+        # Force status to draft if user is not staff (Admin)
+        if not request.user.is_staff:
+            status = 'draft'
+            
         attachment = request.FILES.get('attachment')
 
         error = _attachment_error(attachment)
@@ -104,6 +109,11 @@ def edit(request, pk, slug):
         title = request.POST.get('title')
         detail = request.POST.get('detail')
         status = request.POST.get('status')
+        
+        # Force status to draft if user is not staff (Admin)
+        if not request.user.is_staff:
+            status = 'draft'
+            
         attachment = request.FILES.get('attachment')
 
         error = _attachment_error(attachment)
