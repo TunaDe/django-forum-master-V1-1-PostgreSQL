@@ -25,10 +25,12 @@
 
               <div class="form-group">
                 <label for="status">Status</label>
-                <select class="form-control" id="status" name="status">
+                                <select class="form-control" id="status" name="status">
                     <option value="draft">Not done? Save your shout in your profile till youre ready</option>
+                    {% if user.is_staff %}
                     <option value="published" {% if post.status == 'published' %}selected{% endif %}>Shout out loud!!</option>
-                </select>
+                    {% endif %}
+                                </select>
               </div>
 
               <div class="form-group">
@@ -58,4 +60,5 @@
             </form>
           </div>
     </section>
+
 {% endblock %}
