@@ -22,7 +22,11 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('privacy-policy/', views.privacy_policy, name='privacy_policy'),
+    # HTML page (uses site layout)
+    path('privacy-policy/', views.privacy_policy_page, name='privacy_policy'),
+    # Direct PDF download
+    path('privacy-policy/download/', views.privacy_policy_download, name='privacy_policy_download'),
+
     path('', include('Post.urls', namespace="post")),
     path('profile/', include('allauth.urls')),
     path('ads/', include('advert.urls', namespace="advert")),
