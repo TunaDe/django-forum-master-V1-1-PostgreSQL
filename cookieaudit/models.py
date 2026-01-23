@@ -18,6 +18,7 @@ class CookieEvent(models.Model):
 
     class Meta:
         managed = True
+        db_table = 'tracking_cookie_cookieevent'
         
 
     def __str__(self):
