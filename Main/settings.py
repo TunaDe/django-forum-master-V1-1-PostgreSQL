@@ -78,7 +78,7 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
-    "cookieaudit.apps.CookieauditConfig",
+    'cookieaudit',
 ]
 
 SITE_ID = 1
@@ -241,6 +241,7 @@ if ON_RENDER:
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", "")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
+
 
 
 
