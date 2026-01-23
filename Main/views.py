@@ -3,6 +3,7 @@ from pathlib import Path
 from django.conf import settings
 from django.http import FileResponse, Http404
 from django.shortcuts import render
+from django.shortcuts import redirect
 
 
 def privacy_policy_page(request):
@@ -33,3 +34,18 @@ def privacy_policy_download(request):
         )
     except FileNotFoundError as exc:
         raise Http404("Privacy policy file not found") from exc
+
+
+def set_consent_cookie(request):
+    """Sets a sample cookie so you can see it in Admin."""
+    resp = redirect("post:home")
+    resp.set_cookie(
+        "ssgu_consent",
+        "accepted",
+        max_age=60 * 60 * 24 * 365,  # 1 year
+        samesite="Lax",
+        secure=not settings.DEBUG,
+        httponly=False,  # set True if you do not need JS access
+    )
+    return resp
+
