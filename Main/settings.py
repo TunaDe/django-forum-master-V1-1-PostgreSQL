@@ -75,6 +75,10 @@ INSTALLED_APPS = [
     'advert',
 ]
 
+INSTALLED_APPS += [
+    "cookieaudit.apps.CookieauditConfig",
+]
+
 SITE_ID = 1
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -101,6 +105,10 @@ if find_spec('allauth.account.middleware') is not None:
 MIDDLEWARE += [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
+
+MIDDLEWARE += [
+    "cookieaudit.middleware.CookieAuditMiddleware",
 ]
 
 ROOT_URLCONF = 'Main.urls'
@@ -228,3 +236,4 @@ if ON_RENDER:
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", "")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
+
