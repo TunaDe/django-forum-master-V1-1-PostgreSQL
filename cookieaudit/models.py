@@ -17,7 +17,8 @@ class CookieEvent(models.Model):
     value_sha256 = models.CharField(max_length=64, blank=True)
 
     class Meta:
-        ordering = ["-created_at"]
+        managed = True
+        db_table = 'tracking_cookie_cookieevent'
 
     def __str__(self):
         return f"{self.cookie_name} @ {self.created_at:%Y-%m-%d %H:%M:%S}"
