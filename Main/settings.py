@@ -53,6 +53,8 @@ if ON_RENDER:
 
 # Application definition
 
+COOKIEAUDIT_ENABLED = True  # set False to disable without editing MIDDLEWARE
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -239,5 +241,6 @@ if ON_RENDER:
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", "")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
+
 
 
