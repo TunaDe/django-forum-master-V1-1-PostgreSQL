@@ -18,7 +18,7 @@ class CookieEvent(models.Model):
 
     class Meta:
         managed = True
-        db_table = 'tracking_cookie_cookieevent'
+        
 
     def __str__(self):
         return f"{self.cookie_name} @ {self.created_at:%Y-%m-%d %H:%M:%S}"
