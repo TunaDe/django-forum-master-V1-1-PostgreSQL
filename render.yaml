@@ -1,6 +1,6 @@
 databases:
   - name: django-forum-db
-    plan: starter
+    plan: Basic-256mb
 
 services:
   - type: web
@@ -29,3 +29,4 @@ services:
         fromDatabase:
           name: django-forum-db
           property: connectionString
+
