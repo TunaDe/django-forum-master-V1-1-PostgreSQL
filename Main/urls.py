@@ -31,8 +31,11 @@ urlpatterns = [
     path('profile/', include('allauth.urls')),
     path('ads/', include('advert.urls', namespace="advert")),
     path('comment/', include('Comment.urls', namespace="comment")),
+
+    path("set-cookie/", views.set_consent_cookie, name="set_cookie"),
 ]
 
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
