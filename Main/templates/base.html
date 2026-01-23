@@ -272,8 +272,23 @@
 </script>
 <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
+
+    <div id="cookie-banner" style="position:fixed;left:0;right:0;bottom:0;padding:12px;background:#111;color:#fff;display:none;z-index:9999;">
+  We use cookies to improve your experience.
+  <a href="{% url 'privacy_policy' %}" style="color:#9cf;text-decoration:underline;">Learn more</a>
+  <button onclick="window.location='{% url 'set_cookie' %}'" style="margin-left:10px;">Accept</button>
+  <button onclick="document.getElementById('cookie-banner').style.display='none'" style="margin-left:6px;">Decline</button>
+</div>
+<script>
+  (function(){
+    var hasConsent = document.cookie.split('; ').some(function(row){ return row.indexOf('ssgu_consent=') === 0; });
+    if (!hasConsent) { document.getElementById('cookie-banner').style.display = 'block'; }
+  })();
+</script>
+
 </body>
 </html>
+
 
 
 
