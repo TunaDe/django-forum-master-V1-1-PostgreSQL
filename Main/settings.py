@@ -111,6 +111,9 @@ MIDDLEWARE += [
     "cookieaudit.middleware.CookieAuditMiddleware",
 ]
 
+COOKIEAUDIT_ALLOWLIST = ["sessionid", "csrftoken", "ssgu_consent"]  # customize as needed
+COOKIEAUDIT_SAMPLE_RATE = 1.0  # 0<rate<=1; use <1.0 to sample
+
 ROOT_URLCONF = 'Main.urls'
 
 TEMPLATES = [
@@ -236,4 +239,5 @@ if ON_RENDER:
 
 STRIPE_PUBLISHABLE_KEY = os.environ.get("STRIPE_PUBLISHABLE_KEY", "")
 STRIPE_SECRET_KEY = os.environ.get("STRIPE_SECRET_KEY", "")
+
 
